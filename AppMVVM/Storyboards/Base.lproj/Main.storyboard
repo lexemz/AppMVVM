@@ -91,11 +91,13 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4HV-be-aBt">
                                 <rect key="frame" x="343.5" y="122" width="26.5" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <color key="tintColor" systemColor="systemGrayColor"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal">
                                     <imageReference key="image" image="heart.fill" catalog="system" symbolScale="large"/>
                                 </state>
+                                <connections>
+                                    <action selector="likeButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="goy-ZD-VS5"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -115,7 +117,7 @@
                     <connections>
                         <outlet property="courseImageView" destination="mgq-gr-20h" id="yJf-49-D6P"/>
                         <outlet property="lessonsCountLabel" destination="mbQ-xE-9YB" id="QG9-UC-rEc"/>
-                        <outlet property="likeButton" destination="4HV-be-aBt" id="BOT-9v-Oti"/>
+                        <outlet property="likeButton" destination="4HV-be-aBt" id="F67-nM-arj"/>
                         <outlet property="testsCountLabel" destination="Bj7-Hg-ZGF" id="wL8-Dz-Ijk"/>
                     </connections>
                 </viewController>
@@ -128,9 +130,6 @@
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
