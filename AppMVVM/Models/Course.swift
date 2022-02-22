@@ -10,6 +10,6 @@ import Foundation
 struct Course: Decodable {
     let name: String
     let imageUrl: URL
-    let nubmerOfLessons: Int
+    let numberOfLessons: Int
     let numberOfTests: Int
 }
