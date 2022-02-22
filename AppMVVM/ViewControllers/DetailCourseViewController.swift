@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailCourseViewController: UIViewController {
 
     @IBOutlet var courseImageView: UIImageView!
     @IBOutlet var likeButton: UIButton!

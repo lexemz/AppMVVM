@@ -19,7 +19,7 @@ class CoursesTableViewController: UITableViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let detailVC = segue.destination as! DetailViewController
+        let detailVC = segue.destination as! DetailCourseViewController
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         
         detailVC.course = courses[indexPath.row]
