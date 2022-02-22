@@ -12,10 +12,15 @@ class CourseTableViewCell: UITableViewCell {
         var content = defaultContentConfiguration()
         
         content.text = course.name
-        content.image = nil // TODO: make network load
+        
         content.secondaryText = """
-                                Уроки: \(course.nubmerOfLessons)
+                                Уроки: \(course.numberOfLessons)
                                 Тесты: \(course.numberOfTests)
                                 """
+        
+        guard let imageData = NetworkManager.shared.fetchImage(url: course.imageUrl) else { return }
+        content.image = UIImage(data: imageData)
+        
+        contentConfiguration = content
     }
 }
