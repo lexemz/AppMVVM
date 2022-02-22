@@ -14,45 +14,55 @@ class CoursesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        setupUI()
     }
-
-
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let detailVC = segue.destination as! DetailViewController
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
         
+        detailVC.course = courses[indexPath.row]
     }
     
+    private func setupUI() {
+        title = "SwiftBook Courses"
+        tableView.rowHeight = 100
+        
+        fetchCourses()
+    }
+    
+    private func fetchCourses() {
+        NetworkManager.shared.fetchCourses { [unowned self] result in
+            switch result {
+                
+            case .success(let courses):
+                self.courses = courses
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .failure(_):
+                print("SOMETHING GOT WRONG")
+            }
+        }
+    }
 
 }
 
 // MARK: - Table view data source
 
 extension CoursesTableViewController {
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         courses.count
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 0
-    }
-
-}
-
-// MARK: - Table view delegate
-
-extension CoursesTableViewController {
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CourseCell") as! CourseTableViewCell
         let course = courses[indexPath.row]
         
-        print(course)
+        cell.configure(with: course)
+        
+        return cell
     }
-    
-    
 }
