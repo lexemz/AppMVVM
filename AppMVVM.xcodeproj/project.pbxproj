@@ -16,6 +16,7 @@
 		781DCEB027C5217F008B3A8D /* CoursesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781DCEAF27C5217F008B3A8D /* CoursesTableViewController.swift */; };
 		781DCEB227C521BA008B3A8D /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781DCEB127C521BA008B3A8D /* Course.swift */; };
 		781DCEB827C5274D008B3A8D /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781DCEB727C5274D008B3A8D /* CourseTableViewCell.swift */; };
+		781DCEBB27C52870008B3A8D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781DCEBA27C52870008B3A8D /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		781DCEAF27C5217F008B3A8D /* CoursesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesTableViewController.swift; sourceTree = "<group>"; };
 		781DCEB127C521BA008B3A8D /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		781DCEB727C5274D008B3A8D /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
+		781DCEBA27C52870008B3A8D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			children = (
 				781DCEB927C527F5008B3A8D /* ViewControllers */,
 				781DCEB327C522A7008B3A8D /* Views */,
+				781DCEBC27C5287A008B3A8D /* Services */,
 				781DCEB427C522B0008B3A8D /* Models */,
 				781DCEB527C522C1008B3A8D /* App */,
 				781DCEB627C522CF008B3A8D /* Storyboards */,
@@ -114,6 +117,14 @@
 				781DCEAF27C5217F008B3A8D /* CoursesTableViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		781DCEBC27C5287A008B3A8D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				781DCEBA27C52870008B3A8D /* NetworkManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +201,7 @@
 				781DCEB027C5217F008B3A8D /* CoursesTableViewController.swift in Sources */,
 				781DCEA027C52119008B3A8D /* DetailViewController.swift in Sources */,
 				781DCEB827C5274D008B3A8D /* CourseTableViewCell.swift in Sources */,
+				781DCEBB27C52870008B3A8D /* NetworkManager.swift in Sources */,
 				781DCEB227C521BA008B3A8D /* Course.swift in Sources */,
 				781DCE9C27C52119008B3A8D /* AppDelegate.swift in Sources */,
 				781DCE9E27C52119008B3A8D /* SceneDelegate.swift in Sources */,
