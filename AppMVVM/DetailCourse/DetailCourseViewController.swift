@@ -18,11 +18,18 @@ class DetailCourseViewController: UIViewController {
     var course: Course!
     var viewModel: DetailCourseViewModelProtocol! {
         didSet {
+            viewModel.viewModelDidChange = { [weak self] viewModel in
+                self?.setupFavoriteStatus(viewModel.isFavorite)
+            }
+            
             title = viewModel.courseTitle
+            lessonsCountLabel.text = viewModel.numberOfLessons
+            testsCountLabel.text = viewModel.numberOfTests
+            
+            guard let imageData = viewModel.imageData else { return }
+            courseImageView.image = UIImage(data: imageData)
         }
     }
-    
-    private var isFavorite = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,25 +39,15 @@ class DetailCourseViewController: UIViewController {
     }
     
     @IBAction func likeButtonPressed() {
-        isFavorite.toggle()
-        setupFavoriteStatus()
-        UDManager.shared.saveDataUD(status: isFavorite, courseName: course.name)
+        viewModel.favoriteButtonPressed()
     }
     
     private func setupUI () {
-        lessonsCountLabel.text = "\(course.numberOfLessons) - Lessons"
-        testsCountLabel.text = "\(course.numberOfTests) - Tests"
-        
-        guard let imageData = NetworkManager.shared.fetchImage(url: course.imageUrl) else { return }
-        courseImageView.image = UIImage(data: imageData)
-        
-        isFavorite = UDManager.shared.getDataUD(courseName: course.name)
-        setupFavoriteStatus()
+        setupFavoriteStatus(viewModel.isFavorite)
     }
     
-    private func setupFavoriteStatus() {
-        likeButton.tintColor = isFavorite ? .red : .gray
+    private func setupFavoriteStatus(_ status: Bool) {
+        likeButton.tintColor = status ? .red : .gray
     }
-
 }
 
