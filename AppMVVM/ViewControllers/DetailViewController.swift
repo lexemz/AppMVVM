@@ -20,8 +20,18 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupUI()
     }
 
+    private func setupUI () {
+        title = course.name
+        
+        lessonsCountLabel.text = "\(course.numberOfLessons) - Lessons"
+        testsCountLabel.text = "\(course.numberOfTests) - Tests"
+        
+        guard let imageData = NetworkManager.shared.fetchImage(url: course.imageUrl) else { return }
+        courseImageView.image = UIImage(data: imageData)
+    }
 
 }
 
