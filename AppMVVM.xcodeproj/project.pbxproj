@@ -18,6 +18,7 @@
 		781DCEB827C5274D008B3A8D /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781DCEB727C5274D008B3A8D /* CourseTableViewCell.swift */; };
 		781DCEBB27C52870008B3A8D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781DCEBA27C52870008B3A8D /* NetworkManager.swift */; };
 		788AAC0F27C542E800AA091D /* UDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788AAC0E27C542E800AA091D /* UDManager.swift */; };
+		788AAC1327C546A800AA091D /* DetailCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788AAC1227C546A800AA091D /* DetailCourseViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		781DCEB727C5274D008B3A8D /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 		781DCEBA27C52870008B3A8D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		788AAC0E27C542E800AA091D /* UDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDManager.swift; sourceTree = "<group>"; };
+		788AAC1227C546A800AA091D /* DetailCourseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCourseViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +68,8 @@
 		781DCE9A27C52119008B3A8D /* AppMVVM */ = {
 			isa = PBXGroup;
 			children = (
-				781DCEB927C527F5008B3A8D /* ViewControllers */,
+				788AAC1027C5467C00AA091D /* DetailCourse */,
+				788AAC1127C5468A00AA091D /* CoursesTable */,
 				781DCEB327C522A7008B3A8D /* Views */,
 				781DCEBC27C5287A008B3A8D /* Services */,
 				781DCEB427C522B0008B3A8D /* Models */,
@@ -112,15 +115,6 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		781DCEB927C527F5008B3A8D /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				781DCE9F27C52119008B3A8D /* DetailCourseViewController.swift */,
-				781DCEAF27C5217F008B3A8D /* CoursesTableViewController.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
 		781DCEBC27C5287A008B3A8D /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +122,23 @@
 				788AAC0E27C542E800AA091D /* UDManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		788AAC1027C5467C00AA091D /* DetailCourse */ = {
+			isa = PBXGroup;
+			children = (
+				781DCE9F27C52119008B3A8D /* DetailCourseViewController.swift */,
+				788AAC1227C546A800AA091D /* DetailCourseViewModel.swift */,
+			);
+			path = DetailCourse;
+			sourceTree = "<group>";
+		};
+		788AAC1127C5468A00AA091D /* CoursesTable */ = {
+			isa = PBXGroup;
+			children = (
+				781DCEAF27C5217F008B3A8D /* CoursesTableViewController.swift */,
+			);
+			path = CoursesTable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +214,7 @@
 			files = (
 				781DCEB027C5217F008B3A8D /* CoursesTableViewController.swift in Sources */,
 				781DCEA027C52119008B3A8D /* DetailCourseViewController.swift in Sources */,
+				788AAC1327C546A800AA091D /* DetailCourseViewModel.swift in Sources */,
 				781DCEB827C5274D008B3A8D /* CourseTableViewCell.swift in Sources */,
 				781DCEBB27C52870008B3A8D /* NetworkManager.swift in Sources */,
 				781DCEB227C521BA008B3A8D /* Course.swift in Sources */,

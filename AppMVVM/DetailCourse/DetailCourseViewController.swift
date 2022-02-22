@@ -16,12 +16,18 @@ class DetailCourseViewController: UIViewController {
     @IBOutlet var testsCountLabel: UILabel!
     
     var course: Course!
+    var viewModel: DetailCourseViewModelProtocol! {
+        didSet {
+            title = viewModel.courseTitle
+        }
+    }
     
     private var isFavorite = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel = DetailCourseViewModel(course: course)
         setupUI()
     }
     
@@ -32,8 +38,6 @@ class DetailCourseViewController: UIViewController {
     }
     
     private func setupUI () {
-        title = course.name
-        
         lessonsCountLabel.text = "\(course.numberOfLessons) - Lessons"
         testsCountLabel.text = "\(course.numberOfTests) - Tests"
         
