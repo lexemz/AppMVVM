@@ -12,9 +12,12 @@ class CourseListViewController: UITableViewController {
         didSet {
             viewModel.fetchCourses {
                 self.tableView.reloadData()
+                self.activityIndicator?.stopAnimating()
             }
         }
     }
+    
+    private var activityIndicator: UIActivityIndicatorView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,12 +30,32 @@ class CourseListViewController: UITableViewController {
         let detailVC = segue.destination as! DetailCourseViewController
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         
-        detailVC.course = viewModel.courses[indexPath.row]
+        detailVC.viewModel = viewModel.getDetailsViewModel(at: indexPath)
     }
     
     private func setupUI() {
-        title = "SwiftBook Courses"
+        title = "Courses"
         tableView.rowHeight = 100
+        activityIndicator = showActivityIndicator()
+    }
+    
+    
+    private func showActivityIndicator() -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .large
+        
+        let navigationBarHeight = navigationController?.navigationBar.frame.size.height ?? 0
+        let tabBarHeight = tabBarController?.tabBar.frame.size.height ?? 0
+        
+        activityIndicator.center = CGPoint(
+            x: view.frame.size.width / 2.0,
+            y: view.frame.size.height / 2.0 - navigationBarHeight - tabBarHeight)
+        
+        view.addSubview(activityIndicator)
+        
+        return activityIndicator
     }
 
 }

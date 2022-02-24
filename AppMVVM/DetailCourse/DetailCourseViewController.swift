@@ -15,26 +15,10 @@ class DetailCourseViewController: UIViewController {
     @IBOutlet var lessonsCountLabel: UILabel!
     @IBOutlet var testsCountLabel: UILabel!
     
-    var course: Course!
-    var viewModel: DetailCourseViewModelProtocol! {
-        didSet {
-            viewModel.viewModelDidChange = { [weak self] viewModel in
-                self?.setupFavoriteStatus(viewModel.isFavorite)
-            }
-            
-            title = viewModel.courseTitle
-            lessonsCountLabel.text = viewModel.numberOfLessons
-            testsCountLabel.text = viewModel.numberOfTests
-            
-            guard let imageData = viewModel.imageData else { return }
-            courseImageView.image = UIImage(data: imageData)
-        }
-    }
+    var viewModel: DetailCourseViewModelProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewModel = DetailCourseViewModel(course: course)
         setupUI()
     }
     
@@ -44,6 +28,17 @@ class DetailCourseViewController: UIViewController {
     
     private func setupUI () {
         setupFavoriteStatus(viewModel.isFavorite)
+        
+        viewModel.viewModelDidChange = { [weak self] viewModel in
+            self?.setupFavoriteStatus(viewModel.isFavorite)
+        }
+        
+        title = viewModel.courseTitle
+        lessonsCountLabel.text = viewModel.numberOfLessons
+        testsCountLabel.text = viewModel.numberOfTests
+        
+        guard let imageData = viewModel.imageData else { return }
+        courseImageView.image = UIImage(data: imageData)
     }
     
     private func setupFavoriteStatus(_ status: Bool) {

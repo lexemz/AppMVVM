@@ -49,7 +49,7 @@ class DetailCourseViewModel: DetailCourseViewModelProtocol {
         }
     }
     
-    // View - не должна ничего знать о модели данных
+    // View - не должна ничего знать о модели данных поэтому private 
     private let course: Course
     
     required init(course: Course) {
