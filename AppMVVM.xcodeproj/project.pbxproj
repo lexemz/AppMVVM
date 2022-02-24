@@ -13,12 +13,14 @@
 		781DCEA327C52119008B3A8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 781DCEA127C52119008B3A8D /* Main.storyboard */; };
 		781DCEA527C5211B008B3A8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 781DCEA427C5211B008B3A8D /* Assets.xcassets */; };
 		781DCEA827C5211B008B3A8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 781DCEA627C5211B008B3A8D /* LaunchScreen.storyboard */; };
-		781DCEB027C5217F008B3A8D /* CoursesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781DCEAF27C5217F008B3A8D /* CoursesTableViewController.swift */; };
+		781DCEB027C5217F008B3A8D /* CourseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781DCEAF27C5217F008B3A8D /* CourseListViewController.swift */; };
 		781DCEB227C521BA008B3A8D /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781DCEB127C521BA008B3A8D /* Course.swift */; };
 		781DCEB827C5274D008B3A8D /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781DCEB727C5274D008B3A8D /* CourseTableViewCell.swift */; };
 		781DCEBB27C52870008B3A8D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781DCEBA27C52870008B3A8D /* NetworkManager.swift */; };
 		788AAC0F27C542E800AA091D /* UDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788AAC0E27C542E800AA091D /* UDManager.swift */; };
 		788AAC1327C546A800AA091D /* DetailCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788AAC1227C546A800AA091D /* DetailCourseViewModel.swift */; };
+		78D70C1727C81D860045AAB3 /* CourseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D70C1627C81D860045AAB3 /* CourseListViewModel.swift */; };
+		78D70C1927C826EA0045AAB3 /* CourseCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D70C1827C826EA0045AAB3 /* CourseCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,12 +32,14 @@
 		781DCEA427C5211B008B3A8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		781DCEA727C5211B008B3A8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		781DCEA927C5211B008B3A8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		781DCEAF27C5217F008B3A8D /* CoursesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesTableViewController.swift; sourceTree = "<group>"; };
+		781DCEAF27C5217F008B3A8D /* CourseListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseListViewController.swift; sourceTree = "<group>"; };
 		781DCEB127C521BA008B3A8D /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		781DCEB727C5274D008B3A8D /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 		781DCEBA27C52870008B3A8D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		788AAC0E27C542E800AA091D /* UDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDManager.swift; sourceTree = "<group>"; };
 		788AAC1227C546A800AA091D /* DetailCourseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCourseViewModel.swift; sourceTree = "<group>"; };
+		78D70C1627C81D860045AAB3 /* CourseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseListViewModel.swift; sourceTree = "<group>"; };
+		78D70C1827C826EA0045AAB3 /* CourseCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,8 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				788AAC1027C5467C00AA091D /* DetailCourse */,
-				788AAC1127C5468A00AA091D /* CoursesTable */,
-				781DCEB327C522A7008B3A8D /* Views */,
+				788AAC1127C5468A00AA091D /* CourseList */,
 				781DCEBC27C5287A008B3A8D /* Services */,
 				781DCEB427C522B0008B3A8D /* Models */,
 				781DCEB527C522C1008B3A8D /* App */,
@@ -84,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				781DCEB727C5274D008B3A8D /* CourseTableViewCell.swift */,
+				78D70C1827C826EA0045AAB3 /* CourseCellViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -133,12 +137,14 @@
 			path = DetailCourse;
 			sourceTree = "<group>";
 		};
-		788AAC1127C5468A00AA091D /* CoursesTable */ = {
+		788AAC1127C5468A00AA091D /* CourseList */ = {
 			isa = PBXGroup;
 			children = (
-				781DCEAF27C5217F008B3A8D /* CoursesTableViewController.swift */,
+				781DCEAF27C5217F008B3A8D /* CourseListViewController.swift */,
+				78D70C1627C81D860045AAB3 /* CourseListViewModel.swift */,
+				781DCEB327C522A7008B3A8D /* Views */,
 			);
-			path = CoursesTable;
+			path = CourseList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,8 +218,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				781DCEB027C5217F008B3A8D /* CoursesTableViewController.swift in Sources */,
+				781DCEB027C5217F008B3A8D /* CourseListViewController.swift in Sources */,
+				78D70C1727C81D860045AAB3 /* CourseListViewModel.swift in Sources */,
 				781DCEA027C52119008B3A8D /* DetailCourseViewController.swift in Sources */,
+				78D70C1927C826EA0045AAB3 /* CourseCellViewModel.swift in Sources */,
 				788AAC1327C546A800AA091D /* DetailCourseViewModel.swift in Sources */,
 				781DCEB827C5274D008B3A8D /* CourseTableViewCell.swift in Sources */,
 				781DCEBB27C52870008B3A8D /* NetworkManager.swift in Sources */,

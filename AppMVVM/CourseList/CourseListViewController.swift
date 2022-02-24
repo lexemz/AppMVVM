@@ -7,13 +7,18 @@
 
 import UIKit
 
-class CoursesTableViewController: UITableViewController {
-    
-    private var courses: [Course] = []
+class CourseListViewController: UITableViewController {
+    private var viewModel: CourseListViewModelProtocol! {
+        didSet {
+            viewModel.fetchCourses {
+                self.tableView.reloadData()
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        viewModel = CourseListViewModel()
         setupUI()
     }
     
@@ -22,47 +27,29 @@ class CoursesTableViewController: UITableViewController {
         let detailVC = segue.destination as! DetailCourseViewController
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         
-        detailVC.course = courses[indexPath.row]
+        detailVC.course = viewModel.courses[indexPath.row]
     }
     
     private func setupUI() {
         title = "SwiftBook Courses"
         tableView.rowHeight = 100
-        
-        fetchCourses()
-    }
-    
-    private func fetchCourses() {
-        NetworkManager.shared.fetchCourses { [unowned self] result in
-            switch result {
-                
-            case .success(let courses):
-                self.courses = courses
-                
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            case .failure(_):
-                print("SOMETHING GOT WRONG")
-            }
-        }
     }
 
 }
 
 // MARK: - Table view data source
 
-extension CoursesTableViewController {
+extension CourseListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        courses.count
+        viewModel.numberOfRows()
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CourseCell") as! CourseTableViewCell
-        let course = courses[indexPath.row]
         
-        cell.configure(with: course)
+        cell.viewModel = viewModel.getCellViewModel(at: indexPath)
         
         return cell
     }
 }
+
