@@ -10,9 +10,11 @@ import UIKit
 class CourseListViewController: UITableViewController {
     private var viewModel: CourseListViewModelProtocol! {
         didSet {
-            viewModel.fetchCourses {
-                self.tableView.reloadData()
-                self.activityIndicator?.stopAnimating()
+            // Списка захвата нет, так как экран стартовый
+            // После загрузки данных нужно обновить таблицу - этот метод это и делает
+            viewModel.fetchCourses { [weak self] in
+                self?.tableView.reloadData()
+                self?.activityIndicator?.stopAnimating()
             }
         }
     }
@@ -39,7 +41,6 @@ class CourseListViewController: UITableViewController {
         activityIndicator = showActivityIndicator()
     }
     
-    
     private func showActivityIndicator() -> UIActivityIndicatorView {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.startAnimating()
@@ -57,7 +58,6 @@ class CourseListViewController: UITableViewController {
         
         return activityIndicator
     }
-
 }
 
 // MARK: - Table view data source
