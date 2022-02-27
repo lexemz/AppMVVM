@@ -12,9 +12,7 @@ protocol DetailCourseViewModelProtocol {
     var numberOfLessons: String { get }
     var numberOfTests: String { get }
     var imageData: Data? { get }
-    var isFavorite: Bool { get }
-    
-    var viewModelDidChange: ((DetailCourseViewModelProtocol) -> Void)? { get set }
+    var isFavorite: Box<Bool> { get }
     
     init(course: Course)
     
@@ -38,25 +36,18 @@ class DetailCourseViewModel: DetailCourseViewModelProtocol {
         NetworkManager.shared.fetchImage(url: course.imageUrl)
     }
     
-    var viewModelDidChange: ((DetailCourseViewModelProtocol) -> Void)?
-    
-    var isFavorite: Bool {
-        get {
-            UDManager.shared.getDataUD(courseName: course.name)
-        } set {
-            UDManager.shared.saveDataUD(status: newValue, courseName: course.name)
-            viewModelDidChange?(self)
-        }
-    }
+    var isFavorite: Box<Bool>
     
     // View - не должна ничего знать о модели данных поэтому private 
     private let course: Course
     
     required init(course: Course) {
+        isFavorite = Box(UDManager.shared.getDataUD(courseName: course.name))
         self.course = course
     }
     
     func favoriteButtonPressed() {
-        isFavorite.toggle()
+        isFavorite.value.toggle()
+        UDManager.shared.saveDataUD(status: isFavorite.value, courseName: course.name)
     }
 }

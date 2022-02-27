@@ -27,10 +27,10 @@ class DetailCourseViewController: UIViewController {
     }
     
     private func setupUI () {
-        setupFavoriteStatus(viewModel.isFavorite)
+        setupFavoriteStatus(viewModel.isFavorite.value)
         
-        viewModel.viewModelDidChange = { [weak self] viewModel in
-            self?.setupFavoriteStatus(viewModel.isFavorite)
+        viewModel.isFavorite.bind { [weak self] value in
+            self?.setupFavoriteStatus(value)
         }
         
         title = viewModel.courseTitle
