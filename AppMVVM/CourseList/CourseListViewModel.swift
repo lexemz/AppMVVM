@@ -11,8 +11,7 @@ protocol CourseListViewModelProtocol {
     func fetchCourses(completionHandler: @escaping () -> Void)
     func numberOfRows() -> Int// тк в VC метод отвечает за кол-во строк, то и тут делаем метод
     
-    func getCellViewModel(at indexPath: IndexPath) -> CourseCellViewModelProtocol
-    func getDetailsViewModel(at indexPath: IndexPath) -> DetailCourseViewModelProtocol
+    func getCoutse(at indexPath: IndexPath) -> Course
 }
 
 class CourseListViewModel: CourseListViewModelProtocol {
@@ -35,13 +34,8 @@ class CourseListViewModel: CourseListViewModelProtocol {
         courses.count
     }
     
-    // собрать ViewModel ячейки, для конфигурации её отображения
-    func getCellViewModel(at indexPath: IndexPath) -> CourseCellViewModelProtocol {
-        CourseCellViewModel(course: courses[indexPath.row])
-    }
-    
-    func getDetailsViewModel(at indexPath: IndexPath) -> DetailCourseViewModelProtocol {
-        DetailCourseViewModel(course: courses[indexPath.row])
+    func getCoutse(at indexPath: IndexPath) -> Course {
+        courses[indexPath.row]
     }
 }
 

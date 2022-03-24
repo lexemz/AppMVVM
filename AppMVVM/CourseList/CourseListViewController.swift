@@ -8,13 +8,13 @@
 import UIKit
 
 class CourseListViewController: UITableViewController {
-    private var viewModel: CourseListViewModelProtocol! {
+    var viewModel: CourseListViewModelProtocol! {
         didSet {
             // Списка захвата нет, так как экран стартовый
             // После загрузки данных нужно обновить таблицу - этот метод это и делает
-            viewModel.fetchCourses { [weak self] in
-                self?.tableView.reloadData()
-                self?.activityIndicator?.stopAnimating()
+            viewModel.fetchCourses {
+                self.tableView.reloadData()
+                self.activityIndicator?.stopAnimating()
             }
         }
     }
@@ -23,7 +23,9 @@ class CourseListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = CourseListViewModel()
+        
+        let counfigurator = CourseListConfigurator()
+        counfigurator.configure(view: self)
         setupUI()
     }
     
@@ -32,7 +34,8 @@ class CourseListViewController: UITableViewController {
         let detailVC = segue.destination as! DetailCourseViewController
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         
-        detailVC.viewModel = viewModel.getDetailsViewModel(at: indexPath)
+        let configurator = DetailCourseConfigurator()
+        configurator.configure(view: detailVC, course: viewModel.getCoutse(at: indexPath))
     }
     
     private func setupUI() {
@@ -70,9 +73,9 @@ extension CourseListViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CourseCell") as! CourseTableViewCell
         
-        cell.viewModel = viewModel.getCellViewModel(at: indexPath)
+        let configurator = CourseCellConfigurator()
+        configurator.configure(view: cell, course: viewModel.getCoutse(at: indexPath))
         
         return cell
     }
 }
-
