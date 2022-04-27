@@ -10,11 +10,11 @@ import UIKit
 class CourseListViewController: UITableViewController {
     var viewModel: CourseListViewModelProtocol! {
         didSet {
-            // Списка захвата нет, так как экран стартовый
+            // Слабый захват можно опустить, так как экран стартовый
             // После загрузки данных нужно обновить таблицу - этот метод это и делает
-            viewModel.fetchCourses {
-                self.tableView.reloadData()
-                self.activityIndicator?.stopAnimating()
+            viewModel.fetchCourses { [weak self] in
+                self?.tableView.reloadData()
+                self?.activityIndicator?.stopAnimating()
             }
         }
     }

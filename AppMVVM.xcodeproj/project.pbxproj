@@ -80,8 +80,8 @@
 		781DCE9A27C52119008B3A8D /* AppMVVM */ = {
 			isa = PBXGroup;
 			children = (
-				788AAC1027C5467C00AA091D /* DetailCourse */,
 				788AAC1127C5468A00AA091D /* CourseList */,
+				788AAC1027C5467C00AA091D /* DetailCourse */,
 				78678ACC27CB9421002A2C5A /* Helpers */,
 				781DCEBC27C5287A008B3A8D /* Services */,
 				781DCEB427C522B0008B3A8D /* Models */,
